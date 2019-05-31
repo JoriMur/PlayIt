@@ -6,7 +6,7 @@ from django.utils import timezone
 class Game(models.Model):
     image = models.ImageField(blank=True,null=True)
     title = models.CharField(max_length=150, verbose_name="Titel")
-    author = models.CharField(max_length=70, verbose_name="Auteur")
+    authors = models.ManyToManyField("Author", related_name="games")
     publisher = models.CharField(max_length=70,verbose_name="Uitgever")
     numberofplayersminimum = models.IntegerField(verbose_name="Minimum aantal spelers")
     numberofplayersmaximum = models.IntegerField(verbose_name="Maximum aantal spelers")
@@ -39,3 +39,10 @@ class Game(models.Model):
     )
     def __str__(self):
 	    return self.title
+
+
+class Author(models.Model):
+    name = models.CharField(max_length=70, verbose_name="Auteur", unique=True)
+
+    def __str__(self):
+        return self.name
