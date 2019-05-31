@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import models
-from django.utils import timezone
+from django.utils import timezone, now
 
 
 class Game(models.Model):
@@ -39,6 +39,12 @@ class Game(models.Model):
     )
     def __str__(self):
 	    return self.title
+
+    def save(self, *args, **kwargs):
+        if(self.review and self.date_reviewed is None):
+            self.date_reviewed = now()
+
+        super(Game, self).save(*args, **kwargs)
 
 
 class Author(models.Model):
