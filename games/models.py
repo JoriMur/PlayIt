@@ -15,7 +15,7 @@ class Game(models.Model):
     duration = models.DurationField(verbose_name="Duur", help_text="Noteer het zo: [mm:ss]") 
     type = models.CharField(max_length=200)
     review = models.TextField(blank=True, null=True)
-    date_reviewed = models.DateTimeField(blank=True, null=True)
+    date_reviewed = models.DateTimeField(blank=True, null=True,verbose_name="Datum review")
   # score = 
     CONCENTRATIE = 'CR'
     GEDULD = 'GD'
@@ -40,6 +40,9 @@ class Game(models.Model):
     )
     def __str__(self):
 	    return self.title
+		
+    def list_authors(self):
+        return ", ".join([author.name for author in self.authors.all()])
 
     def save(self, *args, **kwargs):
         if(self.review and self.date_reviewed is None):
