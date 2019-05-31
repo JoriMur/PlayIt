@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>PlayIt! Spellenreview site</title>
+	</head>
+	<body>
+		{% if request.user.is_authenticated %}
+			<p> Hi {{request.user.username|title }}, je was hier {{request.user.last_login|date:"D d M Y"}} voor het laatst.</p>
+		{% else %}
+			<p>Welcome guest!</p>
+		{% endif %}
+		
+		<div>
+            <h1><a href="/">PlayIt! Spellenreview site</a></h1>
+        </div>
+
+        <div>
+            <p>published: 31.05.2019, 23:03</p>
+            <h2><a href="">Kolonisten van Catan</a></h2>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        </div>
+
+        <div>
+            <p>published: 31.05.2019, 23:04</p>
+            <h2><a href="">Regenwormen</a></h2>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
+        </div>
+	</body>
+</html>
